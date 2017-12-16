@@ -9,8 +9,8 @@ using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.CSharp.Formatting;
 
 namespace DotNetFormat {
-    class Program {
 
+    class Program {
         static void Process(string source) {
             if (!File.Exists(source)) {
                 Console.WriteLine("≈≈ file not exist - {0}", source);
@@ -55,9 +55,7 @@ namespace DotNetFormat {
                 while ((line = Console.ReadLine()) != null) {
                     Process(line);
                 }
-                return;
             }
-            Console.WriteLine("≈≈ invalid argument");
         }
     }
 }
