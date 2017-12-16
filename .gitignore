@@ -3,3 +3,5 @@ obj
 packages
 paket-files
 .DS_Store
+publish
+.gh-release.json

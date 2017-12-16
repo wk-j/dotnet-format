@@ -8,28 +8,30 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.CSharp.Formatting;
 
-namespace DotNetFormat
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var source = "/Users/wk/Source/DotNetFormat/tests/Hello.cs";
-            var output = "/Users/wk/Source/DotNetFormat/tests/Hello.Result.cs";
+namespace DotNetFormat {
+    class Program {
+        static void Main(string[] args) {
+            if (args.Length != 1) {
+                Console.WriteLine("≈≈ Invalid argument");
+                return;
+            }
 
-            SyntaxTree readFile(string file)
-            {
-                using (var reader = new StreamReader(file))
-                {
+            var source = args[0];
+
+            if (!File.Exists(source)) {
+                Console.WriteLine("≈≈ File not exist - {0}", source);
+                return;
+            }
+
+            SyntaxTree readFile(string file) {
+                using (var reader = new StreamReader(file)) {
                     var code = reader.ReadToEnd();
                     return CSharpSyntaxTree.ParseText(code);
                 }
             }
 
-            void writeFile(string file, SyntaxNode node)
-            {
-                using (var writer = new StreamWriter(output))
-                {
+            void writeFile(string file, SyntaxNode node) {
+                using (var writer = new StreamWriter(file)) {
                     node.WriteTo(writer);
                 }
             }
@@ -45,7 +47,7 @@ namespace DotNetFormat
                 .WithChangedOption(CSharpFormattingOptions.NewLineForElse, false);
 
             var result = Formatter.Format(syntax.GetRoot(), space, newOption);
-            writeFile(output, result);
+            writeFile(source, result);
         }
     }
 }
