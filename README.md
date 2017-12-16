@@ -5,7 +5,12 @@ Format C# document using Roslyn
 ## Installation
 
 ```
-brew tap wk-j/dotnet-format
-brew update
-brew instsall dotnet-format
+brew tap wk-j/tab
+brew install dotnet-format
+```
+
+## Usage
+
+```bash
+dotnet-format tests/Hello.cs
 ```
