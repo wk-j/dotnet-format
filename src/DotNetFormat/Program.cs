@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.CodeAnalysis.MSBuild;
 using System.Linq;
@@ -10,18 +10,14 @@ using Microsoft.CodeAnalysis.CSharp.Formatting;
 
 namespace DotNetFormat {
     class Program {
-        static void Main(string[] args) {
-            if (args.Length != 1) {
-                Console.WriteLine("≈≈ Invalid argument");
-                return;
-            }
 
-            var source = args[0];
-
+        static void Process(string source) {
             if (!File.Exists(source)) {
-                Console.WriteLine("≈≈ File not exist - {0}", source);
+                Console.WriteLine("≈≈ file not exist - {0}", source);
                 return;
             }
+
+            Console.WriteLine("√ process - {0}", source);
 
             SyntaxTree readFile(string file) {
                 using (var reader = new StreamReader(file)) {
@@ -48,6 +44,20 @@ namespace DotNetFormat {
 
             var result = Formatter.Format(syntax.GetRoot(), space, newOption);
             writeFile(source, result);
+        }
+
+        static void Main(string[] args) {
+            if (args.Length == 1) {
+                var source = args[0];
+                Process(source);
+            } else {
+                string line;
+                while ((line = Console.ReadLine()) != null) {
+                    Process(line);
+                }
+                return;
+            }
+            Console.WriteLine("≈≈ invalid argument");
         }
     }
 }

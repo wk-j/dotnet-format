@@ -13,4 +13,5 @@ brew install dotnet-format
 
 ```bash
 dotnet-format tests/Hello.cs
+find . -name "*.cs" | dotnet-format
 ```
