@@ -5,7 +5,7 @@ var project = $"src/{name}/{name}.csproj";
 Task("Zip")
     .IsDependentOn("Build")
     .Does(() => {
-        Zip($"src/{name}/bin/Debug/net47", "publish/dotnet-format.0.2.0.zip");
+        Zip($"src/{name}/bin/Debug/net47", "publish/dotnet-format.0.3.0.zip");
     });
 
 

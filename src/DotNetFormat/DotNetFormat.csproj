@@ -5,6 +5,7 @@
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Kurukuru" Version="1.0.0" />
     <PackageReference Include="Microsoft.Build" Version="15.5.180" />
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.5.180" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.6.1" />
