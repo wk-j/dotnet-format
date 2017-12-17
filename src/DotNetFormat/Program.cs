@@ -71,6 +71,7 @@ namespace DotNetFormat {
         static void StartWithoutSpinner(string source) {
             var ok = Validate(source);
             if (ok) {
+                ProcessSourceFile(source);
                 Console.WriteLine($" - Processing ({source})");
             } else {
                 Console.WriteLine($" - File not exist ({source})");
