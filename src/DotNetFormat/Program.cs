@@ -7,6 +7,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.CSharp.Formatting;
 using System.Threading.Tasks;
+using static Microsoft.CodeAnalysis.CSharp.Formatting.CSharpFormattingOptions;
 
 namespace DotNetFormat {
 
@@ -29,18 +30,21 @@ namespace DotNetFormat {
             var space = new AdhocWorkspace();
             var syntax = ReadFile(source);
             var newOption = space.Options
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInLambdaExpressionBody, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAnonymousMethods, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAnonymousTypes, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInControlBlocks, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInTypes, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInMethods, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInProperties, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInObjectCollectionArrayInitializers, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAccessors, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLineForElse, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLineForCatch, false)
-                 .WithChangedOption(CSharpFormattingOptions.NewLineForFinally, false);
+                 .WithChangedOption(NewLinesForBracesInLambdaExpressionBody, false)
+                 .WithChangedOption(NewLinesForBracesInAnonymousMethods, false)
+                 .WithChangedOption(NewLinesForBracesInAnonymousTypes, false)
+                 .WithChangedOption(NewLinesForBracesInControlBlocks, false)
+                 .WithChangedOption(NewLinesForBracesInTypes, false)
+                 .WithChangedOption(NewLinesForBracesInMethods, false)
+                 .WithChangedOption(NewLinesForBracesInProperties, false)
+                 .WithChangedOption(NewLinesForBracesInObjectCollectionArrayInitializers, false)
+                 .WithChangedOption(NewLinesForBracesInAccessors, false)
+                 .WithChangedOption(NewLineForElse, false)
+                 .WithChangedOption(NewLineForCatch, false)
+                 .WithChangedOption(NewLineForFinally, false)
+                 .WithChangedOption(NewLineForClausesInQuery, false)
+                 .WithChangedOption(NewLineForMembersInAnonymousTypes, false)
+                 .WithChangedOption(NewLineForMembersInObjectInit, false);
 
             var result = Formatter.Format(syntax.GetRoot(), space, newOption);
             WriteFile(source, result);
