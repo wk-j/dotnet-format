@@ -1,13 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <LangVersion>7.1</LangVersion>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net47</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Kurukuru" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Build" Version="15.5.180" />
-    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.5.180" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.6.1" />
-  </ItemGroup>
+    <PropertyGroup>
+        <LangVersion>7.1</LangVersion>
+        <OutputType>Exe</OutputType>
+        <!-- <TargetFramework>net47</TargetFramework> -->
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <PackAsTool>true</PackAsTool>
+        <PackageId>wk.DotNetFormat</PackageId>
+        <ToolCommandName>wk-dotnet-format</ToolCommandName>
+        <Version>0.2.0</Version>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Kurukuru" Version="1.0.0" />
+        <PackageReference Include="Microsoft.Build" Version="15.9.20" />
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.9.20" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.10.0" />
+        <!-- <PackageReference Include="Microsoft.Build" Version="15.9.20" /> -->
+        <!-- <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.5.180" /> -->
+        <!-- <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.6.1" /> -->
+    </ItemGroup>
 </Project>

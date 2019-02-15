@@ -1,17 +1,18 @@
 ## .NET Format
 
+[![NuGet](https://img.shields.io/nuget/v/wk.DotNetFormat.svg)](https://www.nuget.org/packages/wk.DotNetFormat)
+
 Format C# document using Roslyn
 
 ## Installation
 
-```
-brew tap wk-j/tab
-brew install dotnet-format
+```bash
+dotnet tool install wk.DotNetFormat
 ```
 
 ## Usage
 
 ```bash
-dotnet-format tests/Hello.cs
-find . -name "*.cs" | dotnet-format
+wk-dotnet-format tests/Hello.cs
+find . -name "*.cs" | wk-dotnet-format
 ```

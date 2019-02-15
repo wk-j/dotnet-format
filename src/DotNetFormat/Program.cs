@@ -1,13 +1,11 @@
 using System;
 using Microsoft.CodeAnalysis.Formatting;
-using Microsoft.CodeAnalysis.MSBuild;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using System.IO;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.CSharp.Formatting;
-using Kurukuru;
 using System.Threading.Tasks;
 
 namespace DotNetFormat {
@@ -28,7 +26,7 @@ namespace DotNetFormat {
         }
 
         static void ProcessSourceFile(string source) {
-            var space = MSBuildWorkspace.Create();
+            var space = new AdhocWorkspace();
             var syntax = ReadFile(source);
             var newOption = space.Options
                  .WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInLambdaExpressionBody, false)
@@ -57,7 +55,7 @@ namespace DotNetFormat {
 
         static void StartSpinner(string source) {
             var ok = Validate(source);
-            Spinner.Start($"Processing ({source}) ", spinner => {
+            Kurukuru.Spinner.Start($"Processing ({source}) ", spinner => {
                 if (ok) {
                     ProcessSourceFile(source);
                     spinner.Succeed();
